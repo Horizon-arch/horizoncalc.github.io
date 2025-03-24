@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор обменных монет</title>
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="st.css">
+</head>
+<body>
+
+<div class="parallelogram" id="one"></div>
+<div class="parallelogram" id="two"></div>
+<div class="parallelogram" id="three"></div>
+<div class="parallelogram" id="four"></div>
+<div class="parallelogram" id="five"></div>
+<div class="parallelogram" id="six"></div>
+
+<button class="weapon-button" id="selectMultipleButton" onclick="toggleSelectMultiple()">Выбрать несколько</button>
+
+<div class="info-circle">i</div>
+<div class="info-popup">Большинство подсчетов были сделаны рупором Чешир.<br>Discord - luzdivina_s7n.<br></div>
+
+<h1>Horizon<br>ⱽ1.7.0</h1>
+
+<div class="barter-button-container">
+    <button id="barterButton" onclick="toggleBarterPopup()">Бартерные Ветки</button>
+</div>
+
+<div id="barterPopup" class="barter-popup" style="display:none;">
+    <div class="barter-content">
+        <input type="text" id="branchSearch" placeholder="Поиск..." onkeyup="filterBranches()">
+        <div id="branchButtons" class="branch-container"></div>
+    </div>
+    <button onclick="closeBarterPopup()">Закрыть</button>
+</div>
+
+<div id="barterOutput" class="result" style="display:none;"></div>
+
+<label for="bar">Выберитe:</label>
+<select id="bar">
+    <option value="">--Выберите--</option>
+    <option value="a">Бар</option>
+    <option value="b">Бар 100-Ренгтен</option>
+    <option value="c">Север</option>
+    <option value="d">Любеч-3</option>
+</select>
+
+<div id="materials" style="display:none;">
+    <div id="materialInputs"></div>
+
+    <label for="itemName">Название (необязательно):</label>
+    <input type="text" id="itemName" placeholder="Введите название">
+
+    <div class="button-container">
+        <button onclick="outputFormattedResult()">Вывести</button>
+        <button class="reset-button" type="button" onclick="resetFormA()">Сбросить все</button>
+    </div>
+</div>
+
+<div class="result" id="result" style="display:none;"></div>
+
+<div class="search-container">
+   <input type="text" class="search-input" id="weaponSearch" placeholder="Поиск..." onkeyup="filterWeapons()">
+   <div id="weaponButtons"></div>
+   <div class="nav-buttons">
+      <button class="nav-arrow" id="prevButton" onclick="scrollWeapons(-1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="nav-arrow" id="nextButton" onclick="scrollWeapons(1)"><i class="fas fa-chevron-right"></i></button>
+   </div>
+</div>
+
+<table class="price-table">
+   <thead>
+      <tr>
+         <th>Бартер</th>
+         <th>Стоимость</th>
+      </tr>
+   </thead>
+   <tbody>
+    <tr><td>Росток чернобыльской ромашки</td><td>4</td></tr>
+    <tr><td>Остатки Радиопередатчика</td><td>4</td></tr>
+    <tr><td>Рассольник</td><td>4</td></tr>
+    <tr><td>Фрагменты данных «Альфа»</td><td>21</td></tr>
+    <tr><td>Северный мох</td><td>5</td></tr>
+    <tr><td>Остатки аккумулятора</td><td>7</td></tr>
+    <tr><td>Дурман-камень</td><td>8</td></tr>
+    <tr><td>Фрагменты данных «Бета»</td><td>40</td></tr>
+    <tr><td>Квантовая батарея</td><td>42</td></tr>
+    <tr><td>Рыжий папоротник</td><td>10</td></tr>
+    <tr><td>Остатки пси-маячка</td><td>7</td></tr>
+    <tr><td>Вещество 07270</td><td>8</td></tr>
+    <tr><td>Фрагменты данных «Гамма»</td><td>66</td></tr>
+    <tr><td>Горьколистник</td><td>12</td></tr>
+    <tr><td>Лимб</td><td>15</td></tr>
+    <tr><td>Лимбоплазма</td><td>200</td></tr>
+    <tr><td>Фрагменты данных «Лямбда»</td><td>86</td></tr>
+    <tr><td>Аномальная батарея</td><td>240</td></tr>
+ </tbody>
+</table>
+
+<script src="./sc.js"></script> 
+</body>
+</html>
