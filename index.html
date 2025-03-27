@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>H-C</title>
+    <title>Калькулятор обменных монет</title>
     <link rel="icon" type="image/png" href="icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="st.css">
@@ -20,12 +20,12 @@
 <button class="weapon-button" id="selectMultipleButton" onclick="toggleSelectMultiple()">Выбрать несколько</button>
 
 <div class="info-circle">i</div>
-<div class="info-popup">???<br>Discord - luzdivina_s7n.<br></div>
+<div class="info-popup">Большинство подсчетов были сделаны рупором Чешир.<br>Discord - luzdivina_s7n.<br></div>
 
-<h1>Horizon<br>ⱽ1.8.0</h1>
+<h1>Horizon<br>ⱽ1.7.0</h1>
 
 <div class="barter-button-container">
-    <button id="barterButton" onclick="toggleBarterPopup()">Ветки</button>
+    <button id="barterButton" onclick="toggleBarterPopup()">Бартерные Ветки</button>
 </div>
 
 <div id="barterPopup" class="barter-popup" style="display:none;">
@@ -38,8 +38,8 @@
 
 <div id="barterOutput" class="result" style="display:none;"></div>
 
-<label for="bar">Выберитe:</label>
-<select id="bar">
+<label for="location">Выберитe:</label>
+<select id="location">
     <option value="">--Выберите--</option>
     <option value="a">Бар</option>
     <option value="b">Бар 100-Ренгтен</option>
@@ -47,8 +47,8 @@
     <option value="d">Любеч-3</option>
 </select>
 
-<div id="materials" style="display:none;">
-    <div id="materialInputs"></div>
+<div id="barteramount" style="display:none;">
+    <div id="barteramountInputs"></div>
 
     <label for="itemName">Название (необязательно):</label>
     <input type="text" id="itemName" placeholder="Введите название">
