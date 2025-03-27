@@ -2,10 +2,10 @@ function formatNumberWithSpaces(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
         
-const materialsData = {
+const barteramountData = {
     a:{
          name:"Бар",
-         materials:[
+         barteramount:[
              {name:"Росток чернобыльской ромашки",cost :4},
              {name:"Остатки Радиопередатчика",cost :4},
              {name:"Рассольник",cost :4},
@@ -14,7 +14,7 @@ const materialsData = {
      },
      b:{
          name:"Бар 100-Ренгтен",
-         materials:[
+         barteramount:[
              {name:"Северный мох",cost :5},
              {name:"Остатки аккумулятора",cost :7},
              {name:"Дурман-камень",cost :8},
@@ -23,7 +23,7 @@ const materialsData = {
      },
      c:{
          name:"Север",
-         materials:[
+         barteramount:[
              {name:"Квантовая батарея",cost :42},
              {name:"Рыжий папоротник",cost :10},
              {name:"Остатки пси-маячка",cost :7},
@@ -33,7 +33,7 @@ const materialsData = {
      },
      d:{
          name:"Любеч-3",
-         materials:[
+         barteramount:[
              {name:"Горьколистник",cost :12},
              {name:"Лимб",cost :15},
              {name:"Лимбоплазма",cost :200},
@@ -510,28 +510,28 @@ function scrollWeapons(direction) {
     displayWeapons(); 
 }
 
-document.getElementById('bar').addEventListener('change', function() {
+document.getElementById('location').addEventListener('change', function() {
     const selectedBar = this.value;
-    const materialsDiv = document.getElementById('materials');
-    const materialInputs = document.getElementById('materialInputs');
+    const barteramountDiv = document.getElementById('barteramount');
+    const barteramountInputs = document.getElementById('barteramountInputs');
 
-    materialInputs.innerHTML = '';
+    barteramountInputs.innerHTML = '';
 
     if (selectedBar) {
-        const selectedMaterials = materialsData[selectedBar].materials;
+        const selectedMaterials = barteramountData[selectedBar].barteramount;
 
-        selectedMaterials.forEach(material => {
+        selectedMaterials.forEach(barteramount => {
             const inputDiv = document.createElement('div');
             inputDiv.innerHTML = `
-                <label>${material.name}:</label>
-                <input type='number' id='${material.name.replace(/\s+/g, '_')}' min='0' value='0'>
+                <label>${barteramount.name}:</label>
+                <input type='number' id='${barteramount.name.replace(/\s+/g, '_')}' min='0' value='0'>
             `;
-            materialInputs.appendChild(inputDiv);
+            barteramountInputs.appendChild(inputDiv);
         });
 
-        materialsDiv.style.display = 'block';
+        barteramountDiv.style.display = 'block';
     } else {
-        materialsDiv.style.display = 'none';
+        barteramountDiv.style.display = 'none';
     }
 });
 
@@ -595,21 +595,21 @@ function updateWeaponButtonStyles() {
 
 
 function outputFormattedResult() {
-    const selectedBar = document.getElementById('bar').value;
-    const selectedMaterials = materialsData[selectedBar].materials;
+    const selectedBar = document.getElementById('location').value;
+    const selectedMaterials = barteramountData[selectedBar].barteramount;
     
     let totalCost = 0;
     let itemName = document.getElementById('itemName').value || '<...>';
     
     let outputDetails = `**Обменные монеты на ${itemName}:**\n`;
 
-    selectedMaterials.forEach(material => {
-        const quantity = parseInt(document.getElementById(material.name.replace(/\s+/g, '_')).value) || 0;
+    selectedMaterials.forEach(barteramount => {
+        const quantity = parseInt(document.getElementById(barteramount.name.replace(/\s+/g, '_')).value) || 0;
         
         if (quantity > 0) {
-            const materialCost = quantity * material.cost; 
-            outputDetails += `> ${material.name}: ${formatNumberWithSpaces(materialCost)};\n`;
-            totalCost += materialCost; 
+            const barteramountCost = quantity * barteramount.cost; 
+            outputDetails += `> ${barteramount.name}: ${formatNumberWithSpaces(barteramountCost)};\n`;
+            totalCost += barteramountCost; 
         }
     });
 
@@ -656,7 +656,6 @@ function displayAllSelectedWeaponsResults() {
         outputDetails += `> Общее: **0.**`; 
     }
 
-    // Добавьте форматирование для всех чисел в outputDetails
     outputDetails = outputDetails.replace(/\d{4,}/g, match => formatNumberWithSpaces(match));
 
     document.getElementById('result').innerText = outputDetails.replace(/\n/g, '\n');
@@ -1299,24 +1298,19 @@ document.addEventListener('mouseup', () => {
 });
 
 function resetFormA() {
-    // Получаем все input элементы внутри <div id="materialInputs">
-    const materialInputs = document.querySelectorAll('#materialInputs input[type="number"]');
+    const barteramountInputs = document.querySelectorAll('#barteramountInputs input[type="number"]');
 
-    // Перебираем каждый input и устанавливаем значение в 0
-    materialInputs.forEach(input => {
-        input.value = '0'; // Сбрасываем значение input в 0
-    });
+    barteramountInputs.forEach(input => {
+        input.value = '0';    });
 
-    // Очищаем поле названия предмета
     document.getElementById('itemName').value = '';
 
-    // Дополнительные действия после очистки полей
-    console.log('Форма очищена, за исключением выпадающего списка.');
+    console.log('FORM 0');
 }
 
 function resetForm() {
-     document.getElementById('materials').style.display = 'none'; 
-     document.getElementById('materialInputs').innerHTML = ''; 
+     document.getElementById('barteramount').style.display = 'none'; 
+     document.getElementById('barteramountInputs').innerHTML = ''; 
      document.getElementById('itemName').value = ''; 
      document.getElementById('result').style.display = 'none'; 
      document.getElementById('barterOutput').style.display = 'none';
